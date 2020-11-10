@@ -36,7 +36,7 @@ public class TicTacToe {
                 if(rowCount==dimension){
                     break;
                 }
-                System.out.print("--------");
+                System.out.print("-----------------");
             }
             System.out.print("\n");
         }
@@ -54,23 +54,20 @@ public class TicTacToe {
 
     public static boolean winCheck(int dimension, List board, int choice, Character turn){
 
-        List<Boolean> tempBoard = new ArrayList<Boolean>(25);                                                // created a new 5x5 board for checker
+        List<Boolean> tempBoard = new ArrayList<Boolean>(25);                                                      // created a new 5x5 board for checker
                                                                                                                         //refer to documentation to understand methodology
         for(int row=-2; row<=2; row++){
             for(int column=-2; column<=2;column++) {
-                int count= 0;
                 try {
-                    tempBoard.add(count, board.get(choice + row * dimension + column-1).equals(turn));
+                    tempBoard.add(board.get(choice + row * dimension + column-1).equals(turn));
                 }catch(Exception ignore){
-                    tempBoard.add(count, false);
+                    tempBoard.add(false);
                 }
-                count++;
             }
         }
 
         choice = 12;
         dimension = 5;
-        TicTacToe.printBoard(dimension,tempBoard);
 
         if ((tempBoard.get(choice - dimension - 1) && (tempBoard.get(choice + dimension + 1)))) {                       //check 1,5
             return true;
